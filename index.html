@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patisserie THE.K.A - Ζαχαροπλαστείο Θ.Ε.Κ.Α</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #d4566e;
+            --secondary-color: #f5d547;
+            --accent-color: #ffb4a2;
+            --dark-color: #2c2c2c;
+            --light-color: #f8f9fa;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .logo p {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #fff5f7 0%, #fffaf0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            opacity: 0.3;
+            animation: blob-animation 8s infinite;
+        }
+
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            top: -100px;
+            right: -50px;
+        }
+
+        .blob-2 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            bottom: 100px;
+            left: 50px;
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            top: 50%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes blob-animation {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 20px) scale(0.9); }
+            75% { transform: translate(50px, 50px) scale(1.05); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero-content h2 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), #c23e52);
+            color: white;
+            box-shadow: 0 10px 30px rgba(212, 86, 110, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 86, 110, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary-color), #e8a400);
+            color: var(--dark-color);
+            box-shadow: 0 10px 30px rgba(245, 213, 71, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 213, 71, 0.4);
+        }
+
+        .btn-shine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-shine:hover::before {
+            left: 100%;
+        }
+
+        .btn-pulse {
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0%, 100% { box-shadow: 0 10px 30px rgba(245, 213, 71, 0.3); }
+            50% { box-shadow: 0 10px 50px rgba(245, 213, 71, 0.6); }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .fade-in-delay {
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        /* Featured Products */
+        .featured {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .featured h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .featured-card h3 {
+            padding: 1.5rem 1.5rem 0;
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+
+        .featured-card p {
+            padding: 0.5rem 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            padding: 1rem 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #fff5f7 0%, #fffaf0 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            min-width: 50px;
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .menu h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-item {
+            text-align: center;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 180px;
+        }
+
+        .menu-item h3 {
+            padding: 1.5rem 1rem 0;
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+
+        .menu-item p {
+            padding: 0.5rem 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .badge-price {
+            padding: 1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .menu-cta {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), #c23e52);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .menu-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #fff5f7 0%, #fffaf0 100%);
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .stars {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            margin-bottom: 1rem;
+            color: #555;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .author {
+            font-weight: 600;
+            color: var(--primary-color);
+            text-align: right;
+        }
+
+        /* Info Section */
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 60px 0;
+            background: white;
+        }
+
+        .info-card {
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .info-card-1 { background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); }
+        .info-card-2 { background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1)); }
+        .info-card-3 { background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1)); }
+        .info-card-4 { background: linear-gradient(135deg, rgba(250, 112, 154, 0.1), rgba(254, 214, 227, 0.1)); }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .info-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #fff5f7 0%, #fffaf0 100%);
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(212, 86, 110, 0.1);
+        }
+
+        .contact-form button {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+        }
+
+        .info-list p {
+            margin-bottom: 1rem;
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            color: #999;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-content h2 {
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .modal-content p {
+            color: #555;
+            margin: 1rem 0;
+        }
+
+        .modal-content .btn {
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Scroll to top button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary-color), #c23e52);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(212, 86, 110, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-top-btn.show {
+            display: block;
+        }
+
+        .scroll-top-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 86, 110, 0.4);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .featured-grid,
+            .menu-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .menu-cta,
+            .contact-form,
+            .contact-info {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .featured h2,
+            .menu h2,
+            .testimonials h2,
+            .contact h2 {
+                font-size: 1.8rem;
+            }
+
+            .featured-card,
+            .menu-item {
+                border-radius: 10px;
+            }
+
+            .navbar .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🍰 THE.K.A</h1>
+                <p>PATISSERIE</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Αρχική</a></li>
+                <li><a href="#about">Περί Ημών</a></li>
+                <li><a href="#menu">Μενού</a></li>
+                <li><a href="#testimonials">Κριτικές</a></li>
+                <li><a href="#contact">Επικοινωνία</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2 class="fade-in">🍰 Γεύση του Παραδείσου</h2>
+            <p class="fade-in-delay">Τα πιο εξαιρετικά γλυκά και ζαχαροπλαστικά της περιοχής</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary btn-shine" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Δείτε το Μενού</button>
+                <button class="btn btn-secondary btn-pulse" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Παραγγείλτε Τώρα</button>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <h2>✨ Τα Αγαπημένα Μας</h2>
+        <div class="featured-grid">
+            <div class="featured-card card-hover">
+                <div class="card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <span class="badge">⭐ Bestseller</span>
+                </div>
+                <h3>🍫 Σοκολατένια Λάχανα</h3>
+                <p>Πλούσια σοκολάτα με φρέσκια κρέμα</p>
+                <p class="price">€4,50</p>
+            </div>
+            <div class="featured-card card-hover">
+                <div class="card-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <span class="badge">🔥 Hot</span>
+                </div>
+                <h3>🍌 Εκλέρ Πραλίνα</h3>
+                <p>Αεράτη κρέμα με ολόφρεσκα υλικά</p>
+                <p class="price">€3,90</p>
+            </div>
+            <div class="featured-card card-hover">
+                <div class="card-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <span class="badge">💎 Premium</span>
+                </div>
+                <h3>🍓 Τούρτα Φράουλα</h3>
+                <p>Ολόφρεσκα φρούτα και κρέμα μασκαρπόνε</p>
+                <p class="price">€5,50</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>❤️ Γιατί Εμείς;</h2>
+                    <p>Στο Patisserie THE.K.A, κάθε δημιούργημα είναι μια συμφωνία γεύσεων και σχήματος. Με υλικά υψηλότερης ποιότητας και παραδοσιακές τεχνικές, δημιουργούμε γλυκά που δεν είναι απλώς νόστιμα - είναι κομμάτια τέχνης που θα θυμάστε για πάντα!</p>
+                    <div class="features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🎨</span>
+                            <p>Χειροποίητα με αγάπη</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">✨</span>
+                            <p>Φρέσκα κάθε μέρα</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🥗</span>
+                            <p>Φυσικά υλικά</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🎁</span>
+                            <p>Κατάλληλα για κάθε Εορτή</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <h2>📋 Δείτε το Πλήρες Μενού</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                <h3>🍌 Εκλέρ</h3>
+                <p>Διάφορα γεύματα</p>
+                <p class="badge-price">€3,50 - €4,50</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <h3>💫 Μακαρόν</h3>
+                <p>Σε αποκλειστικές γεύσες</p>
+                <p class="badge-price">€2,50 - €3,50</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <h3>🎂 Τούρτες</h3>
+                <p>Για κάθε ειδική στιγμή</p>
+                <p class="badge-price">€4,50 - €12,00</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                <h3>🍨 Κρέμες</h3>
+                <p>Αφρώδεις και δροσιστικές</p>
+                <p class="badge-price">€2,00 - €3,50</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                <h3>🍫 Σοκολάτες</h3>
+                <p>Πολυτέλεια σε κάθε δάγκα</p>
+                <p class="badge-price">€3,00 - €5,00</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                <h3>🍓 Φρούτα</h3>
+                <p>Φρέσκα και αρωματικά</p>
+                <p class="badge-price">€2,50 - €4,00</p>
+            </div>
+        </div>
+        <div class="menu-cta">
+            <p>Για το πλήρες μενού και τις ειδικές παραγγελίες</p>
+            <button class="btn btn-primary btn-shine" onclick="callNumber()">📞 Τηλεφωνήστε: 2299 063377</button>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2>💬 Τι λένε οι Πελάτες μας</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Απλώς υπέροχο! Τα καλύτερα γλυκά στην περιοχή. Παρήγγειλα για τη βάπτιση της κόρης μου και όλοι μας μίλησαν για τη γεύση τους!"</p>
+                <p class="author">- Μαρία Κ.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Κάθε φορά που περνάω από εδώ, κάνω μια στάση. Δεν μπορώ να αντισταθώ στα εκλέρ τους. Ποιότητα που δικαιώνεται το κόστος!"</p>
+                <p class="author">- Νίκος Π.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Παράγγειλα τούρτα για τα γενέθλιά μου και ήταν άψογη. Φρέσκα υλικά, όμορφη παρουσίαση και πραγματικά νόστιμα. Συνιστώ ανεπιφύλακτα!"</p>
+                <p class="author">- Ελένη Σ.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="info-card info-card-1">
+            <h3>📍 Τοποθεσία</h3>
+            <p>Επαρ. Οδ. Κερατέας-Κακής Θάλασσας<br>Κερατέα 190 01</p>
+        </div>
+        <div class="info-card info-card-2">
+            <h3>📞 Επικοινωνία</h3>
+            <p>2299 063377<br>Διαθέσιμοι για παραγγελίες</p>
+        </div>
+        <div class="info-card info-card-3">
+            <h3>⏰ Ωράριο</h3>
+            <p>Δευτ-Παρασ: 9:00 - 21:00<br>Σάβ-Κυρ: 9:00 - 20:00</p>
+        </div>
+        <div class="info-card info-card-4">
+            <h3>🚚 Υπηρεσίες</h3>
+            <p>Παραλαβή • Διανομή<br>Ειδικές Παραγγελίες</p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact">
+        <h2>📧 Επικοινωνήστε μαζί μας</h2>
+        <div class="contact-container">
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Το Όνομα σας" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Το Email σας" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" placeholder="Τηλέφωνο" required>
+                </div>
+                <div class="form-group">
+                    <select id="subject" required>
+                        <option value="">Επιλέξτε Θέμα</option>
+                        <option value="Παραγγελία">🛒 Παραγγελία</option>
+                        <option value="Ερώτηση">❓ Ερώτηση</option>
+                        <option value="Εξυπηρέτηση Πελάτη">💼 Εξυπηρέτηση Πελάτη</option>
+                        <option value="Ειδική Εκδήλωση">🎉 Ειδική Εκδήλωση</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" placeholder="Το μήνυμα σας..." rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-shine">✉️ Αποστολή</button>
+            </form>
+            <div class="contact-info">
+                <h3>❤️ Γιατί να επιλέξετε εμάς;</h3>
+                <div class="info-list">
+                    <p>✓ Γρήγορη απάντηση στις παραγγελίες</p>
+                    <p>✓ Ελεύθερη διανομή για αγορές >€30</p>
+                    <p>✓ Ειδικές εκπτώσεις για σταθερούς πελάτες</p>
+                    <p>✓ Προσαρμογή γεύσης κατά παραγγελία</p>
+                    <p>✓ 24ωρη υποστήριξη για ειδικές εκδηλώσεις</p>
+                    <p>✓ Υλικά Εξαιρετικής Ποιότητας</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Patisserie THE.K.A - Ζαχαροπλαστείο Θ.Ε.Κ.Α. Όλα τα δικαιώματα διατηρούνται. | Δημιουργήθηκε με ❤️ για τους πελάτες μας</p>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>✓ Ευχαριστούμε!</h2>
+            <p>Το μήνυμα σας έχει σταλεί με επιτυχία!</p>
+            <p>Θα σας επιστρέψουμε σύντομα για να επιβεβαιώσουμε τη παραγγελία σας.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Κλείστε</button>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll behavior for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+        const successModal = document.getElementById('successModal');
+        const closeBtn = document.querySelector('.close');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validate form
+            if (name && email && phone && subject && message) {
+                // Show success modal
+                successModal.style.display = 'block';
+                
+                // Reset form
+                contactForm.reset();
+                
+                console.log({
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    subject: subject,
+                    message: message,
+                    timestamp: new Date().toISOString()
+                });
+            } else {
+                alert('Παρακαλώ συμπληρώστε όλα τα πεδία');
+            }
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', closeModal);
+
+        function closeModal() {
+            successModal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === successModal) {
+                successModal.style.display = 'none';
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.8s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.featured-card, .menu-item, .testimonial-card, .info-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effect to cards
+        document.querySelectorAll('.featured-card, .menu-item, .testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Parallax effect on hero
+        window.addEventListener('scroll', function() {
+            const blobs = document.querySelectorAll('.blob');
+            const scrollY = window.scrollY;
+            
+            blobs.forEach((blob, index) => {
+                blob.style.transform = `translateY(${scrollY * 0.5 * (index + 1)}px)`;
+            });
+        });
+
+        // Add ripple effect to buttons
+        const buttons = document.querySelectorAll('.btn');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Redirect phone button
+        function callNumber() {
+            const phoneNumber = '2299063377';
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                window.location.href = `tel:${phoneNumber}`;
+            } else {
+                alert('Τηλεφωνήστε: +30 2299 063377');
+            }
+        }
+
+        // Add scroll-to-top button
+        const scrollTopBtn = document.createElement('button');
+        scrollTopBtn.innerHTML = '↑';
+        scrollTopBtn.className = 'scroll-top-btn';
+        document.body.appendChild(scrollTopBtn);
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        console.log('🎂 Καλώς ήρθατε στο Patisserie THE.K.A - Website Loaded Successfully!');
+    </script>
+</body>
+</html>
